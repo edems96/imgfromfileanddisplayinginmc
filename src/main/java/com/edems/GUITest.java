@@ -82,19 +82,18 @@ public class GUITest extends JavaPlugin implements Listener {
     }
 
     private void arrowProj(Player player) {
-        player.launchProjectile(Arrow.class,  player.getLocation().getDirection().multiply(5));
+        player.launchProjectile(Arrow.class, player.getLocation().getDirection().multiply(5));
     }
 
     private void spawnBMP(Player player) {
         BufferedImage img;
 
         try {
-            img = ImageIO.read(new File("image.bmp"));
+            img = ImageIO.read(new File("image2.bmp"));
         } catch (IOException e) {
             getLogger().info("e: "+ e.getLocalizedMessage());
             return;
         }
-getLogger().info("read!!!");
 
         for(int y = 0; y < img.getHeight(); y++) {
             for(int x = 0; x < img.getWidth(); x++) {
@@ -103,35 +102,43 @@ getLogger().info("read!!!");
                         .getBlock()
                         .getRelative(BlockFace.NORTH)
                         .getLocation()
-                        .add(x, img.getHeight()-y, 0).getBlock();
+                        .add(x, img.getHeight() - y, 0).getBlock();
 
                 block.setType(Material.WOOL);
-                //block.getState().setData(new MaterialData());
-
-              //  Wool wool = new Wool();
-
-                Color color = new Color(img.getRGB(x, y));
-
-                if( color.getRed() == 255 ) {
-                    //wool.setColor(DyeColor.RED);
-                    block.setData(DyeColor.RED.getData());
-                } else if( color.getBlue() == 255 ) {
-                    //wool.setColor(DyeColor.BLUE);
-                    block.setData(DyeColor.BLUE.getData());
-                } else if( color.getGreen() == 255 ) {
-                    //wool.setColor(DyeColor.GREEN);
-                    block.setData(DyeColor.GREEN.getData());
-                } else {
-                    //wool.setColor(DyeColor.YELLOW);
-                    block.setData(DyeColor.BLACK.getData());
-                }
-
-               // block.setType(wool.getItemType());
-                //block.getState().setData(new Mat);
-
+                block.setData(getDyecolor(new Color(img.getRGB(x, y))).getData());
             }
         }
+    }
 
+    private DyeColor getDyecolor(Color color) {
+        if( color == null )
+            return DyeColor.WHITE;
 
+        if( color.equals(Color.BLACK) )
+            return DyeColor.BLACK;
+        else if( color.equals(Color.WHITE) )
+            return DyeColor.WHITE;
+        else if( color.equals(Color.RED) )
+            return DyeColor.RED;
+        else if( color.equals(Color.GREEN) )
+            return DyeColor.GREEN;
+        else if( color.equals(Color.BLUE) )
+            return DyeColor.BLUE;
+        else if( color.equals(Color.CYAN) )
+            return DyeColor.CYAN;
+        else if( color.equals(Color.GRAY) )
+            return DyeColor.GRAY;
+        else if(color.equals(Color.MAGENTA) )
+            return DyeColor.MAGENTA;
+        else if( color.equals(Color.YELLOW) )
+            return DyeColor.YELLOW;
+        else if( color.equals(Color.ORANGE) )
+            return DyeColor.ORANGE;
+        else if( color.equals(Color.PINK) )
+            return DyeColor.PINK;
+        else if( color.equals(Color.LIGHT_GRAY) )
+            return DyeColor.SILVER;
+
+        return DyeColor.WHITE;
     }
 }
