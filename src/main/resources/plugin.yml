@@ -1,0 +1,16 @@
+name: GUITest
+main: com.edems.GUITest
+version: 0.1
+
+commands:
+    fire:
+        description: "Fire a proj."
+        usage: "/fire"
+
+    arrow:
+        usage: "/arrow"
+        description: "Arrow..."
+
+    spawnbmp:
+        usage: "/spawnbmp"
+        description: "spawn image.bmp from blocks..."

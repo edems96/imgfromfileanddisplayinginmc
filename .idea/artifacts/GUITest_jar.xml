@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="GUITest:jar">
+    <output-path>$PROJECT_DIR$/out/</output-path>
+    <root id="archive" name="GUITest.jar">
+      <element id="module-output" name="GUITest" />
+    </root>
+  </artifact>
+</component>
